@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 import SystemConfiguration.CaptiveNetwork
+import MMLanScan
 
 class ViewController: UIViewController, MMLANScannerDelegate {
     
@@ -16,6 +17,7 @@ class ViewController: UIViewController, MMLANScannerDelegate {
     static let LIVE_ID_KEY = "LiveID"
     static let SERVER_IP = "ServerIP"
     static let PORT = 3002
+    static let USE_SERVER = true
     
     @IBOutlet weak var activityMonitor: UIActivityIndicatorView!
     var lanScanner : MMLANScanner!
@@ -67,15 +69,21 @@ class ViewController: UIViewController, MMLANScannerDelegate {
         
         let XBOXIP = ipPathString + XboxIPHost
         
-        //sendOnSignalToServer(ipPathString: ipPathString, liveID: liveID, xboxIp:XBOXIP)
-        //OR
-        sendOnSignal(xboxIP:XBOXIP, liveID:liveID)
+        if (ViewController.USE_SERVER) {
+            sendOnSignalToServer(ipPathString: ipPathString, liveID: liveID, xboxIp:XBOXIP)
+        }
+        else {
+            sendOnSignal(xboxIP:XBOXIP, liveID:liveID)
+        }
     }
     
     func sendOnSignal(xboxIP:String, liveID:String) {
         let xboxManager = XBOXMessager()
         self.activityMonitor.stopAnimating()
-        self.SSIDName.text = xboxManager.powerOn(xboxIP: xboxIP, LiveID: liveID.uppercased())["message"]
+        //self.SSIDName.text = xboxManager.powerOn(xboxIP: xboxIP, LiveID: liveID.uppercased())["message"]
+        xboxManager.powerOn(xboxIP: xboxIP, LiveID: liveID.uppercased()) { (responseDict) in
+            self.SSIDName.text = responseDict["message"]
+        }
     }
     
     func sendOnSignalToServer(ipPathString:String, liveID:String, xboxIp:String) {
@@ -138,9 +146,7 @@ class ViewController: UIViewController, MMLANScannerDelegate {
             self.checkForInputData()
         }))
         
-        DispatchQueue.main.async {
-            self.present(alertView, animated: true, completion: nil)
-        }
+        self.present(alertView, animated: true, completion: nil)
     }
     
     // Return IP address of WiFi interface (en0) as a String, or `nil`

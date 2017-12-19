@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,24 +19,24 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bLj-Ce-Zta">
-                                <rect key="frame" x="36" y="323.5" width="303" height="20.5"/>
+                                <rect key="frame" x="130" y="395.66666666666669" width="115" height="20.666666666666686"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2eO-Zz-T6E">
-                                <rect key="frame" x="337" y="625" width="22" height="22"/>
+                                <rect key="frame" x="337" y="736" width="22" height="22"/>
                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <connections>
                                     <action selector="presentServerAlert" destination="BYZ-38-t0r" eventType="touchUpInside" id="71D-JP-V9Y"/>
                                 </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="E8k-ax-duZ">
-                                <rect key="frame" x="177" y="352" width="20" height="20"/>
+                                <rect key="frame" x="177" y="424.33333333333331" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -45,9 +45,8 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="2eO-Zz-T6E" secondAttribute="bottom" constant="20" id="DPY-VG-kEI"/>
                             <constraint firstItem="2eO-Zz-T6E" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="G4N-HN-2U5"/>
                             <constraint firstItem="E8k-ax-duZ" firstAttribute="centerX" secondItem="bLj-Ce-Zta" secondAttribute="centerX" id="Jke-Jx-R0H"/>
-                            <constraint firstItem="bLj-Ce-Zta" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="lXv-XU-RJq"/>
+                            <constraint firstItem="bLj-Ce-Zta" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QCe-VH-ZiR"/>
                             <constraint firstItem="bLj-Ce-Zta" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="rNH-qY-Ovv"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="bLj-Ce-Zta" secondAttribute="trailing" constant="20" id="sSb-uw-pf6"/>
                         </constraints>
                     </view>
                     <connections>

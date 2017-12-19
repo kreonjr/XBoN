@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftSocket
 
 class XBOXMessager {
     struct PowerPacket {
@@ -37,7 +38,7 @@ class XBOXMessager {
     let XBOX_PORT = 5050
     let XBOX_PING = "dd00000a000000000000000400000002"
     
-    func powerOn(xboxIP:String, LiveID:String) -> [String:String] {
+    func powerOn(xboxIP:String, LiveID:String, completion:(_ returnMessage:[String:String])->Void) {
         let ip_addr = "\(xboxIP)"
         let live_id = LiveID.uppercased()
 
@@ -66,7 +67,7 @@ class XBOXMessager {
         
         if ping_result.isSuccess {
             client.close()
-            return ["message":"Xbox Responded Succesfully"]
+            completion(["message":"Xbox Responded Succesfully"])
         }
         else {
             var count = 0
@@ -78,12 +79,12 @@ class XBOXMessager {
                 
                 if count > 5 {
                     client.close()
-                    return ["message":"Xbox Failed to respond"]
+                    completion(["message":"Xbox Failed to respond"])
                 }
             }
             
             client.close()
-            return ["message":"Xbox Responded Succesfully"]
+            completion(["message":"Xbox Responded Succesfully"])
         }        
     }
     
